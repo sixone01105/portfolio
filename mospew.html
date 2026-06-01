@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>專業證照展示館 | 劉怡伶 Yi-Ling Liu</title>
+    <!-- Google Fonts for handwriting feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#FBF9F4',   /* 暖紙白 */
+                            100: '#F5EFE4',  /* 淺米色 */
+                            200: '#E6DCC8',  /* 溫慢卡其 */
+                            300: '#D7C7AC',  /* 復古棕 */
+                            900: '#5A4E40',  /* 暖深褐 */
+                        },
+                        girlish: {
+                            pink: '#F7D6D0',   /* 圖片款柔粉 */
+                            peach: '#F5C6A5',  /* 圖片款粉橘 */
+                            blue: '#BDD2B6',   /* 圖片款粉綠 */
+                            dusty: '#A9C5D3',  /* 圖片款粉藍 */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Quicksand"', '"PingFang TC"', '"Heiti TC"', '"Microsoft JhengHei"', 'sans-serif'],
+                        hand: ['"Comfortaa"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* 手繪風格 wobbly 不規則邊框效果 */
+        .hand-drawn-border {
+            border: 2px solid #5A4E40;
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+        }
+        
+        .hand-drawn-border-sm {
+            border: 1.5px solid #5A4E40;
+            border-radius: 120px 10px 110px 8px / 12px 115px 10px 120px;
+        }
+
+        /* 網頁主背景：仿照 Natural Girlish patterns 的直條紋質感 */
+        .natural-stripes-bg {
+            background-color: #F5EFE4;
+            background-image: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 45px,
+                rgba(215, 199, 172, 0.25) 45px,
+                rgba(215, 199, 172, 0.25) 90px
+            );
+        }
+
+        /* 花邊圓形裝飾樣式 (Scalloped) */
+        .scallop-shape {
+            background-image: radial-gradient(circle at 50% 120%, transparent 6px, #FAF6EE 6px);
+            background-size: 16px 100%;
+        }
+
+        /* 滾動條客製化 */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F5EFE4;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #D7C7AC;
+            border-radius: 99px;
+            border: 2px solid #F5EFE4;
+        }
+
+        /* 紙膠帶鋸齒邊緣效果 */
+        .washi-tape-jagged {
+            mask-image: repeating-linear-gradient(90deg, transparent, transparent 2px, black 2px, black 10px);
+            clip-path: polygon(0% 0%, 100% 0%, 98% 50%, 100% 100%, 0% 100%, 2% 50%);
+        }
+    </style>
+</head>
+<body class="natural-stripes-bg text-cream-900 font-sans antialiased min-h-screen selection:bg-girlish-pink/50 flex flex-col justify-between">
+
+    <!-- 頂部導覽列 (精簡為獨立品牌的置中設計，無跨頁導覽超連結) -->
+    <nav class="sticky top-0 z-40 bg-cream-50/90 backdrop-blur-md border-b-2 border-cream-900/10">
+        <div class="max-w-4xl mx-auto px-6 py-3.5 flex justify-center items-center">
+            <!-- 品牌帶有小兔子 logo 剪影 -->
+            <div class="font-bold text-xl tracking-wider text-cream-900 flex items-center gap-2">
+                <!-- 兔子 SVG 剪影 -->
+                <svg class="w-7 h-7 fill-cream-900" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50,90 C40,90 25,82 25,60 C25,48 30,42 35,40 C34,25 38,10 44,10 C48,10 49,20 48,30 C51,30 52,10 57,10 C63,10 65,25 64,40 C69,42 74,48 74,60 C74,82 60,90 50,90 Z M37,55 C34,55 32,58 32,61 C32,64 34,67 37,67 C40,67 42,64 42,61 C42,58 40,55 37,55 Z M63,55 C60,55 58,58 58,61 C58,64 60,67 63,67 C66,67 68,64 68,61 C68,58 66,55 63,55 Z" />
+                </svg>
+                <span class="font-hand font-bold text-lg tracking-widest text-cream-900">YI-LING'S PORTFOLIO</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 證照展示館主頁面 -->
+    <main class="flex-1 w-full pb-16 transition-all duration-300">
+        <header class="max-w-4xl mx-auto px-6 pt-12 pb-6 text-center">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-950 hand-drawn-border-sm mb-4">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5 text-amber-700"></i>
+                Microsoft Office Specialist 認證專區
+            </span>
+            <h1 class="text-3xl md:text-4xl font-extrabold tracking-wider text-cream-900 flex justify-center items-center gap-2">
+                <i data-lucide="award" class="w-8 h-8 text-amber-700"></i> 專業證照展示館
+            </h1>
+            <p class="text-xs text-stone-500 mt-2 max-w-md mx-auto leading-relaxed">
+                手帳質感證照展示牆，下方提供即時 PDF 燈箱預覽，點擊卡片可深入了解核心技能重點！
+            </p>
+        </header>
+
+        <!-- 拍立得證照牆區 (Polaroid Showcase Grid) -->
+        <section class="max-w-5xl mx-auto px-6 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+                
+                <!-- 證照 1: MOS PowerPoint -->
+                <div class="relative bg-white p-5 pb-10 shadow-md hover:shadow-xl transition-all duration-300 border border-cream-200 transform -rotate-2 hover:rotate-0 hover:-translate-y-2 group cursor-pointer" onclick="viewCertDetail('ppt')">
+                    <!-- 柔粉色紙膠帶飾條 -->
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-32 h-7 bg-girlish-pink/80 washi-tape-jagged opacity-90 z-10 border-b border-dashed border-amber-900/10 flex items-center justify-center shadow-sm">
+                        <span class="text-[10px] font-hand text-cream-900 tracking-widest font-bold">★ CREATIVE ★</span>
+                    </div>
+                    <!-- 證照 A4 橫向比例 (1.414:1) 圖片區，更新為大寫 .JPG 並添加自動顯示 onload 邏輯 -->
+                    <div class="relative aspect-[1.414/1] bg-cream-50 border border-cream-200/50 rounded overflow-hidden flex items-center justify-center">
+                        <img id="cert-img-ppt" src="https://sixone01105.github.io/portfolio/images/MOS%20PPT.JPG" class="w-full h-full object-cover hidden" alt="MOS PowerPoint Certificate" onerror="showCertPlaceholder('ppt')" onload="this.classList.remove('hidden'); document.getElementById('cert-placeholder-ppt').classList.add('hidden');">
+                        <div id="cert-placeholder-ppt" class="flex flex-col items-center justify-center p-6 text-center">
+                            <i data-lucide="presentation" class="w-16 h-16 text-girlish-peach mb-3 animate-pulse"></i>
+                            <span class="text-sm font-bold text-cream-900/70 block">PowerPoint 證照圖檔</span>
+                            <span class="text-[10px] text-stone-400 mt-1.5">（點擊展開專業細節）</span>
+                        </div>
+                    </div>
+                    <!-- 卡片下方資訊 -->
+                    <div class="mt-5 border-t border-dashed border-cream-200 pt-4 text-center">
+                        <span class="text-xs font-hand font-bold text-stone-500 block">Certificate #01</span>
+                        <h3 class="font-bold text-lg text-cream-900 mt-1">MOS PowerPoint</h3>
+                        <p class="text-xs text-stone-400 font-mono mt-1">Microsoft Office Specialist</p>
+                    </div>
+                    <!-- 懸停點綴貼紙 -->
+                    <div class="absolute bottom-2 right-3 opacity-0 group-hover:opacity-100 transition-opacity text-girlish-pink">
+                        <i data-lucide="sparkles" class="w-5 h-5"></i>
+                    </div>
+                </div>
+
+                <!-- 證照 2: MOS Excel (關鍵強項) -->
+                <div class="relative bg-white p-5 pb-10 shadow-md hover:shadow-xl transition-all duration-300 border border-cream-200 transform rotate-1 hover:rotate-0 hover:-translate-y-2 group cursor-pointer" onclick="viewCertDetail('excel')">
+                    <!-- 粉綠色紙膠帶飾條 -->
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-32 h-7 bg-girlish-blue/80 washi-tape-jagged opacity-90 z-10 border-b border-dashed border-amber-900/10 flex items-center justify-center shadow-sm">
+                        <span class="text-[10px] font-hand text-cream-900 tracking-widest font-bold">✿ DATA HERO ✿</span>
+                    </div>
+                    <!-- 證照 A4 橫向比例 (1.414:1) 圖片區，更新為大寫 .JPG 並添加自動顯示 onload 邏輯 -->
+                    <div class="relative aspect-[1.414/1] bg-cream-50 border border-cream-200/50 rounded overflow-hidden flex items-center justify-center">
+                        <img id="cert-img-excel" src="https://sixone01105.github.io/portfolio/images/MOS%20Excel.JPG" class="w-full h-full object-cover hidden" alt="MOS Excel Certificate" onerror="showCertPlaceholder('excel')" onload="this.classList.remove('hidden'); document.getElementById('cert-placeholder-excel').classList.add('hidden');">
+                        <div id="cert-placeholder-excel" class="flex flex-col items-center justify-center p-6 text-center">
+                            <i data-lucide="file-spreadsheet" class="w-16 h-16 text-girlish-blue mb-3 animate-pulse"></i>
+                            <span class="text-sm font-bold text-cream-900/70 block">Excel 專業證照圖檔</span>
+                            <span class="text-[10px] text-stone-400 mt-1.5">（點擊展開專業細節）</span>
+                        </div>
+                    </div>
+                    <!-- 卡片下方資訊 -->
+                    <div class="mt-5 border-t border-dashed border-cream-200 pt-4 text-center">
+                        <span class="text-xs font-hand font-bold text-stone-500 block">Certificate #02</span>
+                        <h3 class="font-bold text-lg text-cream-900 mt-1">MOS Excel <span class="text-emerald-700 text-xs">(核心)</span></h3>
+                        <p class="text-xs text-stone-400 font-mono mt-1">Microsoft Office Specialist</p>
+                    </div>
+                    <!-- 懸停點綴貼紙 -->
+                    <div class="absolute bottom-2 right-3 opacity-0 group-hover:opacity-100 transition-opacity text-emerald-600">
+                        <i data-lucide="clover" class="w-5 h-5"></i>
+                    </div>
+                </div>
+
+                <!-- 證照 3: MOS Word -->
+                <div class="relative bg-white p-5 pb-10 shadow-md hover:shadow-xl transition-all duration-300 border border-cream-200 transform -rotate-1 hover:rotate-0 hover:-translate-y-2 group cursor-pointer" onclick="viewCertDetail('word')">
+                    <!-- 粉藍色紙膠帶飾條 -->
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-32 h-7 bg-girlish-dusty/80 washi-tape-jagged opacity-90 z-10 border-b border-dashed border-amber-900/10 flex items-center justify-center shadow-sm">
+                        <span class="text-[10px] font-hand text-cream-900 tracking-widest font-bold">✏️ REPORT ✏️</span>
+                    </div>
+                    <!-- 證照 A4 橫向比例 (1.414:1) 圖片區，更新為大寫 .JPG 並添加自動顯示 onload 邏輯 -->
+                    <div class="relative aspect-[1.414/1] bg-cream-50 border border-cream-200/50 rounded overflow-hidden flex items-center justify-center">
+                        <img id="cert-img-word" src="https://sixone01105.github.io/portfolio/images/MOS%20Word.JPG" class="w-full h-full object-cover hidden" alt="MOS Word Certificate" onerror="showCertPlaceholder('word')" onload="this.classList.remove('hidden'); document.getElementById('cert-placeholder-word').classList.add('hidden');">
+                        <div id="cert-placeholder-word" class="flex flex-col items-center justify-center p-6 text-center">
+                            <i data-lucide="file-text" class="w-16 h-16 text-girlish-dusty mb-3 animate-pulse"></i>
+                            <span class="text-sm font-bold text-cream-900/70 block">Word 專業證照圖檔</span>
+                            <span class="text-[10px] text-stone-400 mt-1.5">（點擊展開專業細節）</span>
+                        </div>
+                    </div>
+                    <!-- 卡片下方資訊 -->
+                    <div class="mt-5 border-t border-dashed border-cream-200 pt-4 text-center">
+                        <span class="text-xs font-hand font-bold text-stone-500 block">Certificate #03</span>
+                        <h3 class="font-bold text-lg text-cream-900 mt-1">MOS Word</h3>
+                        <p class="text-xs text-stone-400 font-mono mt-1">Microsoft Office Specialist</p>
+                    </div>
+                    <!-- 懸停點綴貼紙 -->
+                    <div class="absolute bottom-2 right-3 opacity-0 group-hover:opacity-100 transition-opacity text-indigo-500">
+                        <i data-lucide="feather" class="w-5 h-5"></i>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- 聯絡方式 Contact -->
+    <section id="contact" class="bg-cream-900 text-cream-50 py-16 relative overflow-hidden mt-auto">
+        <div class="absolute top-0 left-0 right-0 h-4 bg-cream-100/20 scallop-shape"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="text-center max-w-lg mx-auto mb-10">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/10 mb-3 border border-white/20">
+                    <i data-lucide="mail-open" class="w-6 h-6 text-girlish-pink"></i>
+                </div>
+                <h2 class="text-3xl font-bold mb-3">聯絡我 | Contact</h2>
+                <p class="text-cream-200/80 text-xs">誠摯歡迎與我聊聊！不論是行政規劃、會計出納或是數位辦公流程升級，我都能給予您最極致與溫度的支持。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+                <!-- 基本資料 -->
+                <div class="bg-white/5 border border-white/10 p-6 rounded-2xl space-y-4">
+                    <h3 class="text-lg font-bold border-b border-white/10 pb-2 text-girlish-pink flex items-center gap-2">
+                        <span>✿ 基本聯絡資訊</span>
+                    </h3>
+                    <div class="space-y-4 text-xs font-medium">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-4 h-4 text-girlish-peach"></i>
+                            <span class="text-cream-100">手機：0989-753-985</span>
+                            <button onclick="copyToClipboard('0989753985', '電話號碼已複製')" class="ml-auto text-[10px] bg-white/10 hover:bg-white/20 px-2.5 py-1 rounded text-girlish-peach border border-white/10">複製</button>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-4 h-4 text-girlish-peach"></i>
+                            <span class="text-cream-100">信箱：sixone01105@gmail.com</span>
+                            <button onclick="copyToClipboard('sixone01105@gmail.com', '電子郵件已複製')" class="ml-auto text-[10px] bg-white/10 hover:bg-white/20 px-2.5 py-1 rounded text-girlish-peach border border-white/10">複製</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 證照快速連結 -->
+                <div class="bg-white/5 border border-white/10 p-6 rounded-2xl space-y-4">
+                    <h3 class="text-lg font-bold border-b border-white/10 pb-2 text-girlish-pink">
+                        <span>✿ 專業證照一覽 (點擊預覽)</span>
+                    </h3>
+                    <div class="flex flex-col gap-2.5 pt-1">
+                        <!-- Excel 證照 -->
+                        <div class="flex items-center justify-between bg-white/5 p-2 rounded-xl border border-white/10 text-xs">
+                            <span class="flex items-center gap-1.5 text-cream-100">
+                                <i data-lucide="award" class="w-4 h-4 text-girlish-peach"></i>
+                                MOS Excel 證照
+                            </span>
+                            <div class="flex gap-2">
+                                <button onclick="openHostedPdf('files/MOS_Excel_Certificate.pdf', 'MOS_Excel_證照.pdf')" class="text-[10px] bg-white/10 hover:bg-white/20 px-2 py-1 rounded text-girlish-peach">預覽 PDF</button>
+                                <a href="files/MOS_Excel_Certificate.pdf" download class="text-[10px] bg-white/10 hover:bg-white/20 px-2 py-1 rounded text-cream-200">下載</a>
+                            </div>
+                        </div>
+
+                        <!-- Word 證照 -->
+                        <div class="flex items-center justify-between bg-white/5 p-2 rounded-xl border border-white/10 text-xs">
+                            <span class="flex items-center gap-1.5 text-cream-100">
+                                <i data-lucide="award" class="w-4 h-4 text-girlish-peach"></i>
+                                MOS Word 證照
+                            </span>
+                            <div class="flex gap-2">
+                                <button onclick="openHostedPdf('files/MOS_Word_Certificate.pdf', 'MOS_Word_證照.pdf')" class="text-[10px] bg-white/10 hover:bg-white/20 px-2 py-1 rounded text-girlish-peach">預覽 PDF</button>
+                                <a href="files/MOS_Word_Certificate.pdf" download class="text-[10px] bg-white/10 hover:bg-white/20 px-2 py-1 rounded text-cream-200">下載</a>
+                            </div>
+                        </div>
+
+                        <!-- PPT 證照 -->
+                        <div class="flex items-center justify-between bg-white/5 p-2 rounded-xl border border-white/10 text-xs">
+                            <span class="flex items-center gap-1.5 text-cream-100">
+                                <i data-lucide="award" class="w-4 h-4 text-girlish-peach"></i>
+                                MOS PowerPoint 證照
+                            </span>
+                            <div class="flex gap-2">
+                                <button onclick="openHostedPdf('files/MOS_PPT_Certificate.pdf', 'MOS_PPT_證照.pdf')" class="text-[10px] bg-white/10 hover:bg-white/20 px-2 py-1 rounded text-girlish-peach">預覽 PDF</button>
+                                <a href="files/MOS_PPT_Certificate.pdf" download class="text-[10px] bg-white/10 hover:bg-white/20 px-2 py-1 rounded text-cream-200">下載</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="bg-stone-900 text-stone-500 py-6 text-center text-xs border-t border-stone-800">
+        <p>© 2026 劉怡伶 Liu Yi Ling. All Rights Reserved. 個人求職雜貨風展示專頁</p>
+    </footer>
+
+    <!-- 互動式作品集/證照詳情 Modal -->
+    <div id="projectModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
+        <div class="bg-cream-50 w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl border-2 border-cream-900 animate-in fade-in zoom-in-95 duration-200 flex flex-col max-h-[90vh]">
+            <div class="p-5 border-b border-cream-200 flex justify-between items-center bg-cream-100">
+                <span id="modalCategory" class="text-[10px] font-bold tracking-widest text-amber-800 uppercase bg-white px-2 py-0.5 rounded border border-cream-300">分類</span>
+                <button onclick="closeModal()" class="text-stone-400 hover:text-stone-700 p-1.5 rounded-full hover:bg-cream-200 transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto custom-scrollbar flex-1 space-y-4">
+                <h3 id="modalTitle" class="text-xl font-bold text-cream-900">專案標題</h3>
+                <div id="modalDescription" class="text-sm text-stone-600 leading-relaxed space-y-3 font-medium">
+                    <!-- 動態載入詳細說明 -->
+                </div>
+            </div>
+            <div class="p-5 bg-cream-100 border-t border-cream-200 text-right">
+                <button onclick="closeModal()" class="px-5 py-2 bg-cream-900 text-white rounded-xl text-xs hover:bg-stone-700 transition-colors hand-drawn-border-sm">
+                    關閉視窗
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 💡 照片/PDF 專屬燈箱預覽 Modal -->
+    <div id="photoPreviewModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm hidden">
+        <div id="preview-container" class="bg-white p-4 pb-12 w-full max-w-md rounded-lg shadow-2xl border-4 border-cream-900/60 transform rotate-1 animate-in fade-in zoom-in-95 duration-200 relative flex flex-col transition-all duration-300">
+            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-amber-100/85 w-28 h-6 border border-dashed border-amber-900/30 shadow-xs z-10 rotate-1"></div>
+            
+            <button onclick="closePhotoPreview()" class="absolute -top-3 -right-3 bg-cream-900 hover:bg-stone-700 text-cream-50 w-8 h-8 rounded-full flex items-center justify-center border-2 border-white shadow-md transition-colors z-20">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+            
+            <div id="preview-body" class="w-full h-96 bg-cream-100 border-2 border-cream-900/20 overflow-hidden rounded-md flex items-center justify-center relative transition-all duration-300">
+                <!-- 圖片顯示 -->
+                <img id="preview-photo-img" src="" class="max-w-full max-h-full object-contain hidden" alt="預覽照片">
+                <!-- PDF 顯示 -->
+                <iframe id="preview-pdf-iframe" src="" class="w-full h-full hidden" frameborder="0"></iframe>
+            </div>
+            
+            <div class="mt-4 text-center">
+                <span id="preview-photo-title" class="font-hand font-bold text-sm text-cream-900 tracking-wide block truncate max-w-xs mx-auto">file_title.pdf</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 自訂通知提示 (Toast) -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 bg-emerald-800 text-white px-4 py-3 rounded-xl shadow-lg flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 border border-emerald-900">
+        <i data-lucide="check-circle" class="w-4 h-4 text-emerald-300"></i>
+        <span id="toastMsg" class="text-xs font-medium">訊息</span>
+    </div>
+
+    <script>
+        // 初始化 Lucide 圖示
+        lucide.createIcons();
+
+        // 當證照實體路徑失效時，優雅降級回預設 SVG 佔位符
+        function showCertPlaceholder(certId) {
+            document.getElementById(`cert-img-${certId}`).classList.add('hidden');
+            document.getElementById(`cert-placeholder-${certId}`).classList.remove('hidden');
+        }
+
+        // 點擊證照拍立得，展開細節 Modal 說明
+        function viewCertDetail(certId) {
+            const details = {
+                'ppt': {
+                    title: 'MOS PowerPoint 專門認證',
+                    category: 'Microsoft 專業文書',
+                    desc: `
+                        <p class="font-semibold text-stone-800">認證名稱：</p>
+                        <p>Microsoft Office Specialist (MOS) PowerPoint Associate</p>
+                        <div class="h-[1px] bg-cream-200 my-2"></div>
+                        <p class="font-semibold text-stone-800">核心能力重點：</p>
+                        <ul class="list-disc list-inside space-y-1 pl-1 text-xs">
+                            <li>簡報版面、母片自訂與高質感排版。</li>
+                            <li>多媒體元素、高階動畫與轉場流暢設定。</li>
+                            <li>多格式輸出與演講用簡報智慧化配置。</li>
+                        </ul>
+                        <div class="h-[1px] bg-cream-200 my-2"></div>
+                        <p class="font-semibold text-amber-800">證照功用：</p>
+                        <p>提升提案簡報製作效率，能精準利用動畫、轉場、視覺排版，快速產出主管與客戶一目了然的商業提案計畫。</p>
+                    `
+                },
+                'excel': {
+                    title: 'MOS Excel 專門數據認證',
+                    category: 'Microsoft 數據稽核 (核心技術)',
+                    desc: `
+                        <p class="font-semibold text-stone-800">認證名稱：</p>
+                        <p>Microsoft Office Specialist (MOS) Excel Associate / Expert</p>
+                        <div class="h-[1px] bg-cream-200 my-2"></div>
+                        <p class="font-semibold text-stone-800">核心能力重點：</p>
+                        <ul class="list-disc list-inside space-y-1 pl-1 text-xs">
+                            <li>大數據庫多重條件篩選與數據整理技巧。</li>
+                            <li>熟練運用進階公式 (VLOOKUP, INDEX, MATCH) 等智慧函數。</li>
+                            <li>動態樞紐分析表與互動圖表建立，實現一秒出具視覺化報表。</li>
+                        </ul>
+                        <div class="h-[1px] bg-cream-200 my-2"></div>
+                        <p class="font-semibold text-emerald-800">數據稽核效益：</p>
+                        <p>在應對百萬金流與零落差對帳時，能夠設計自動核算的稽核底稿，確保日常對帳「100% 零誤差」完美過關。</p>
+                    `
+                },
+                'word': {
+                    title: 'MOS Word 專業排版認證',
+                    category: 'Microsoft 流程規範',
+                    desc: `
+                        <p class="font-semibold text-stone-800">認證名稱：</p>
+                        <p>Microsoft Office Specialist (MOS) Word Associate</p>
+                        <div class="h-[1px] bg-cream-200 my-2"></div>
+                        <p class="font-semibold text-stone-800">核心能力重點：</p>
+                        <ul class="list-disc list-inside space-y-1 pl-1 text-xs">
+                            <li>長篇商務報告排版、自訂樣式、自動目錄與頁碼規劃。</li>
+                            <li>巨集、變數追蹤與跨部門協同合約審理.</li>
+                            <li>標準作業程序 (SOP) 模版設計。</li>
+                        </ul>
+                        <div class="h-[1px] bg-cream-200 my-2"></div>
+                        <p class="font-semibold text-stone-800">流程推動效益：</p>
+                        <p>能為企業制定具備高美感、統一規格的合約與 SOP 流程文件，推動行政標準化作業。</p>
+                    `
+                }
+            };
+
+            const data = details[certId];
+            if (data) {
+                document.getElementById('modalTitle').textContent = data.title;
+                document.getElementById('modalCategory').textContent = data.category;
+                document.getElementById('modalDescription').innerHTML = data.desc;
+                
+                const modal = document.getElementById('projectModal');
+                modal.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+            }
+        }
+
+        // 複製至剪貼簿功能
+        function copyToClipboard(text, successMessage) {
+            const tempInput = document.createElement("textarea");
+            tempInput.value = text;
+            tempInput.style.position = "fixed";  
+            document.body.appendChild(tempInput);
+            tempInput.focus();
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                showToast(successMessage);
+            } catch (err) {
+                console.error('複製失敗: ', err);
+            }
+            document.body.removeChild(tempInput);
+        }
+
+        // 顯示 Toast 提示
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            toastMsg.textContent = message;
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // 預覽 PDF 燈箱
+        function openHostedPdf(pdfPath, pdfTitle) {
+            const container = document.getElementById('preview-container');
+            const body = document.getElementById('preview-body');
+            const img = document.getElementById('preview-photo-img');
+            const iframe = document.getElementById('preview-pdf-iframe');
+
+            document.getElementById('preview-photo-title').textContent = `✿ ${pdfTitle} ✿`;
+
+            img.classList.add('hidden');
+            iframe.classList.remove('hidden');
+            iframe.src = pdfPath;
+
+            container.classList.remove('max-w-md');
+            container.classList.add('max-w-3xl');
+            body.classList.remove('h-96');
+            body.classList.add('h-[65vh]');
+            
+            const previewModal = document.getElementById('photoPreviewModal');
+            previewModal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        // 關閉 PDF 預覽燈箱
+        function closePhotoPreview() {
+            const previewModal = document.getElementById('photoPreviewModal');
+            previewModal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+            document.getElementById('preview-pdf-iframe').src = '';
+        }
+
+        // 關閉詳情 Modal
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        // 點擊 Modal 外部背景自動關閉
+        document.getElementById('projectModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+        document.getElementById('photoPreviewModal').addEventListener('click', function(e) {
+            if (e.target === this) closePhotoPreview();
+        });
+    </script>
+</body>
+</html>
