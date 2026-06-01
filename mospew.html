@@ -91,7 +91,6 @@
 </head>
 <body class="natural-stripes-bg text-cream-900 font-sans antialiased min-h-screen selection:bg-girlish-pink/50 flex flex-col justify-between">
 
-    <!-- 頂部導覽列 (精簡為獨立品牌的置中設計，無跨頁導覽超連結) -->
     <nav class="sticky top-0 z-40 bg-cream-50/90 backdrop-blur-md border-b-2 border-cream-900/10">
         <div class="max-w-4xl mx-auto px-6 py-3.5 flex justify-center items-center">
             <!-- 品牌帶有小兔子 logo 剪影 -->
@@ -105,7 +104,6 @@
         </div>
     </nav>
 
-    <!-- 證照展示館主頁面 -->
     <main class="flex-1 w-full pb-16 transition-all duration-300">
         <header class="max-w-4xl mx-auto px-6 pt-12 pb-6 text-center">
             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-950 hand-drawn-border-sm mb-4">
@@ -116,11 +114,10 @@
                 <i data-lucide="award" class="w-8 h-8 text-amber-700"></i> 專業證照展示館
             </h1>
             <p class="text-xs text-stone-500 mt-2 max-w-md mx-auto leading-relaxed">
-                手帳質感證照展示牆，下方提供即時 PDF 燈箱預覽，點擊卡片可深入了解核心技能重點！
+                證照展示牆，下方提供預覽，點擊卡片可深入了解核心技能重點！
             </p>
         </header>
 
-        <!-- 拍立得證照牆區 (Polaroid Showcase Grid) -->
         <section class="max-w-5xl mx-auto px-6 py-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
                 
@@ -130,13 +127,13 @@
                     <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-32 h-7 bg-girlish-pink/80 washi-tape-jagged opacity-90 z-10 border-b border-dashed border-amber-900/10 flex items-center justify-center shadow-sm">
                         <span class="text-[10px] font-hand text-cream-900 tracking-widest font-bold">★ CREATIVE ★</span>
                     </div>
-                    <!-- 證照 A4 橫向比例 (1.414:1) 圖片區，更新為大寫 .JPG 並添加自動顯示 onload 邏輯 -->
+                    <!-- 證照 A4 橫向比例 (1.414:1) 圖片區，使用更新後正確的小寫 mos_ppt.jpg -->
                     <div class="relative aspect-[1.414/1] bg-cream-50 border border-cream-200/50 rounded overflow-hidden flex items-center justify-center">
-                        <img id="cert-img-ppt" src="https://sixone01105.github.io/portfolio/images/MOS%20PPT.JPG" class="w-full h-full object-cover hidden" alt="MOS PowerPoint Certificate" onerror="showCertPlaceholder('ppt')" onload="this.classList.remove('hidden'); document.getElementById('cert-placeholder-ppt').classList.add('hidden');">
+                        <img id="cert-img-ppt" src="https://sixone01105.github.io/portfolio/images/mos_ppt.jpg" class="w-full h-full object-cover hidden" alt="MOS PowerPoint Certificate" onerror="showCertPlaceholder('ppt')" onload="this.classList.remove('hidden'); document.getElementById('cert-placeholder-ppt').classList.add('hidden');">
                         <div id="cert-placeholder-ppt" class="flex flex-col items-center justify-center p-6 text-center">
                             <i data-lucide="presentation" class="w-16 h-16 text-girlish-peach mb-3 animate-pulse"></i>
                             <span class="text-sm font-bold text-cream-900/70 block">PowerPoint 證照圖檔</span>
-                            <span class="text-[10px] text-stone-400 mt-1.5">（點擊展開專業細節）</span>
+                            <span class="text-[10px] text-stone-400 mt-1.5">探索載入中...</span>
                         </div>
                     </div>
                     <!-- 卡片下方資訊 -->
@@ -157,13 +154,13 @@
                     <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-32 h-7 bg-girlish-blue/80 washi-tape-jagged opacity-90 z-10 border-b border-dashed border-amber-900/10 flex items-center justify-center shadow-sm">
                         <span class="text-[10px] font-hand text-cream-900 tracking-widest font-bold">✿ DATA HERO ✿</span>
                     </div>
-                    <!-- 證照 A4 橫向比例 (1.414:1) 圖片區，更新為大寫 .JPG 並添加自動顯示 onload 邏輯 -->
+                    <!-- 證照 A4 橫向比例 (1.414:1) 圖片區，使用更新後正確的小寫 mos_excel.jpg -->
                     <div class="relative aspect-[1.414/1] bg-cream-50 border border-cream-200/50 rounded overflow-hidden flex items-center justify-center">
-                        <img id="cert-img-excel" src="https://sixone01105.github.io/portfolio/images/MOS%20Excel.JPG" class="w-full h-full object-cover hidden" alt="MOS Excel Certificate" onerror="showCertPlaceholder('excel')" onload="this.classList.remove('hidden'); document.getElementById('cert-placeholder-excel').classList.add('hidden');">
+                        <img id="cert-img-excel" src="https://sixone01105.github.io/portfolio/images/mos_excel.jpg" class="w-full h-full object-cover hidden" alt="MOS Excel Certificate" onerror="showCertPlaceholder('excel')" onload="this.classList.remove('hidden'); document.getElementById('cert-placeholder-excel').classList.add('hidden');">
                         <div id="cert-placeholder-excel" class="flex flex-col items-center justify-center p-6 text-center">
                             <i data-lucide="file-spreadsheet" class="w-16 h-16 text-girlish-blue mb-3 animate-pulse"></i>
                             <span class="text-sm font-bold text-cream-900/70 block">Excel 專業證照圖檔</span>
-                            <span class="text-[10px] text-stone-400 mt-1.5">（點擊展開專業細節）</span>
+                            <span class="text-[10px] text-stone-400 mt-1.5">探索載入中...</span>
                         </div>
                     </div>
                     <!-- 卡片下方資訊 -->
@@ -184,13 +181,13 @@
                     <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-32 h-7 bg-girlish-dusty/80 washi-tape-jagged opacity-90 z-10 border-b border-dashed border-amber-900/10 flex items-center justify-center shadow-sm">
                         <span class="text-[10px] font-hand text-cream-900 tracking-widest font-bold">✏️ REPORT ✏️</span>
                     </div>
-                    <!-- 證照 A4 橫向比例 (1.414:1) 圖片區，更新為大寫 .JPG 並添加自動顯示 onload 邏輯 -->
+                    <!-- 證照 A4 橫向比例 (1.414:1) 圖片區，使用更新後正確的小寫 mos_word.jpg -->
                     <div class="relative aspect-[1.414/1] bg-cream-50 border border-cream-200/50 rounded overflow-hidden flex items-center justify-center">
-                        <img id="cert-img-word" src="https://sixone01105.github.io/portfolio/images/MOS%20Word.JPG" class="w-full h-full object-cover hidden" alt="MOS Word Certificate" onerror="showCertPlaceholder('word')" onload="this.classList.remove('hidden'); document.getElementById('cert-placeholder-word').classList.add('hidden');">
+                        <img id="cert-img-word" src="https://sixone01105.github.io/portfolio/images/mos_word.jpg" class="w-full h-full object-cover hidden" alt="MOS Word Certificate" onerror="showCertPlaceholder('word')" onload="this.classList.remove('hidden'); document.getElementById('cert-placeholder-word').classList.add('hidden');">
                         <div id="cert-placeholder-word" class="flex flex-col items-center justify-center p-6 text-center">
                             <i data-lucide="file-text" class="w-16 h-16 text-girlish-dusty mb-3 animate-pulse"></i>
                             <span class="text-sm font-bold text-cream-900/70 block">Word 專業證照圖檔</span>
-                            <span class="text-[10px] text-stone-400 mt-1.5">（點擊展開專業細節）</span>
+                            <span class="text-[10px] text-stone-400 mt-1.5">探索載入中...</span>
                         </div>
                     </div>
                     <!-- 卡片下方資訊 -->
@@ -207,9 +204,23 @@
 
             </div>
         </section>
+
+        <!-- 💡 STREAMING_CHUNK: 圖片載入偵錯小助手 (僅在圖片載入失敗時自動優雅浮現) -->
+        <section id="debug-helper-section" class="max-w-2xl mx-auto px-6 mt-4 hidden">
+            <div class="bg-amber-50 border-2 border-dashed border-amber-800/40 rounded-2xl p-4 text-center relative shadow-sm">
+                <span class="absolute -top-3 left-6 bg-amber-800 text-white text-[9px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded shadow-xs">✿ DEBUG NOTE ✿</span>
+                <p class="text-xs font-bold text-amber-950 mt-1 flex items-center justify-center gap-1.5">
+                    <i data-lucide="help-circle" class="w-4 h-4 text-amber-700 animate-bounce"></i>
+                    偵測到您的證照圖片未能成功顯示？
+                </p>
+                <p class="text-[10px] text-stone-500 mt-1">這通常是瀏覽器快取殘留、GitHub 部署延遲或路徑名稱微小差異所引起的。</p>
+                <button onclick="openDebugModal()" class="mt-2.5 px-4 py-1.5 bg-amber-800 text-white rounded-lg text-[10px] font-bold hover:bg-amber-950 transition-colors hand-drawn-border-sm">
+                    點此開啟一鍵排除指南 ➔
+                </button>
+            </div>
+        </section>
     </main>
 
-    <!-- 聯絡方式 Contact -->
     <section id="contact" class="bg-cream-900 text-cream-50 py-16 relative overflow-hidden mt-auto">
         <div class="absolute top-0 left-0 right-0 h-4 bg-cream-100/20 scallop-shape"></div>
         
@@ -339,6 +350,60 @@
         </div>
     </div>
 
+    <!-- 💡 STREAMING_CHUNK: 建立圖片排錯指南專用 Modal -->
+    <div id="debugModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
+        <div class="bg-cream-50 w-full max-w-md rounded-2xl overflow-hidden shadow-2xl border-2 border-cream-900 animate-in fade-in zoom-in-95 duration-200 flex flex-col">
+            <div class="p-5 border-b border-cream-200 flex justify-between items-center bg-cream-100">
+                <span class="text-[10px] font-bold tracking-widest text-amber-800 uppercase bg-white px-2 py-0.5 rounded border border-cream-300">排除指南</span>
+                <button onclick="closeDebugModal()" class="text-stone-400 hover:text-stone-700 p-1.5 rounded-full hover:bg-cream-200 transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto custom-scrollbar space-y-4 max-h-[70vh]">
+                <h3 class="text-lg font-bold text-cream-900 flex items-center gap-1.5">
+                    <i data-lucide="wrench" class="w-5 h-5 text-amber-700"></i>
+                    一鍵自我排查三步驟
+                </h3>
+                <div class="text-xs text-stone-600 leading-relaxed space-y-4 font-medium">
+                    <div class="p-3 bg-white rounded-xl border border-cream-200">
+                        <p class="font-bold text-stone-800">步驟 1：強制重新整理（清除快取）</p>
+                        <p class="mt-1">請在網頁上按下組合鍵進行強制刷快取：</p>
+                        <ul class="list-disc list-inside mt-1 font-semibold text-amber-800">
+                            <li>Windows / Chrome：按 <kbd class="px-1 py-0.5 bg-stone-100 rounded border">Ctrl + F5</kbd></li>
+                            <li>Mac / Safari：按 <kbd class="px-1 py-0.5 bg-stone-100 rounded border">Cmd + Option + E</kbd> 再重新整理</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-3 bg-white rounded-xl border border-cream-200">
+                        <p class="font-bold text-stone-800">步驟 2：直接檢測 GitHub 是否發布成功</p>
+                        <p class="mt-1">請直接點選下方任一路徑，如果顯示 404，代表 GitHub 尚未同步，或資料夾名稱實際在 GitHub 叫做中文的「圖片」：</p>
+                        <div class="flex flex-col gap-2 mt-2">
+                            <a href="https://sixone01105.github.io/portfolio/images/mos_ppt.jpg" target="_blank" class="text-amber-800 font-bold underline block flex items-center gap-1">
+                                <i data-lucide="external-link" class="w-3 h-3"></i> 測試 PPT 圖片連結 (images)
+                            </a>
+                            <a href="https://sixone01105.github.io/portfolio/images/mos_excel.jpg" target="_blank" class="text-amber-800 font-bold underline block flex items-center gap-1">
+                                <i data-lucide="external-link" class="w-3 h-3"></i> 測試 Excel 圖片連結 (images)
+                            </a>
+                            <a href="https://sixone01105.github.io/portfolio/images/mos_word.jpg" target="_blank" class="text-amber-800 font-bold underline block flex items-center gap-1">
+                                <i data-lucide="external-link" class="w-3 h-3"></i> 測試 Word 圖片連結 (images)
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-white rounded-xl border border-cream-200">
+                        <p class="font-bold text-stone-800">步驟 3：中文字型檔名（若資料夾實際為「圖片」）</p>
+                        <p class="mt-1">如果您的資料夾中文名稱確實是「圖片」，而非英文的「images」，則路徑需要改為中文格式。若經過測試確定是中文資料夾，請隨時通知我，我將立刻為您更換程式碼！</p>
+                    </div>
+                </div>
+            </div>
+            <div class="p-5 bg-cream-100 border-t border-cream-200 text-right">
+                <button onclick="closeDebugModal()" class="px-5 py-2 bg-cream-900 text-white rounded-xl text-xs hover:bg-stone-700 transition-colors hand-drawn-border-sm">
+                    關閉排查指南
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- 自訂通知提示 (Toast) -->
     <div id="toast" class="fixed bottom-5 right-5 z-50 bg-emerald-800 text-white px-4 py-3 rounded-xl shadow-lg flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 border border-emerald-900">
         <i data-lucide="check-circle" class="w-4 h-4 text-emerald-300"></i>
@@ -346,13 +411,38 @@
     </div>
 
     <script>
-        // 初始化 Lucide 圖示
-        lucide.createIcons();
+        // ------------------------------------------------------------------------
+        // ✿ 互動與模態彈窗 (Modal & Lightbox) 控制邏輯
+        // ------------------------------------------------------------------------
 
-        // 當證照實體路徑失效時，優雅降級回預設 SVG 佔位符
+        // 當證照探測與所有備援檔名皆失效時，降級至美觀的 SVG 佔位符，並自動開啟偵錯小助手
         function showCertPlaceholder(certId) {
             document.getElementById(`cert-img-${certId}`).classList.add('hidden');
-            document.getElementById(`cert-placeholder-${certId}`).classList.remove('hidden');
+            const placeholder = document.getElementById(`cert-placeholder-${certId}`);
+            placeholder.classList.remove('hidden');
+            
+            // 替換佔位符文字以提供清楚反饋
+            const textSpan = placeholder.querySelector('span:nth-of-type(2)');
+            if (textSpan) {
+                textSpan.textContent = "（點擊展開專業細節）";
+            }
+
+            // 顯現「圖片載入偵錯小助手」
+            document.getElementById('debug-helper-section').classList.remove('hidden');
+        }
+
+        // 開啟排錯 Modal
+        function openDebugModal() {
+            const modal = document.getElementById('debugModal');
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        // 關閉排錯 Modal
+        function closeDebugModal() {
+            const modal = document.getElementById('debugModal');
+            modal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
         }
 
         // 點擊證照拍立得，展開細節 Modal 說明
@@ -404,7 +494,7 @@
                         <p class="font-semibold text-stone-800">核心能力重點：</p>
                         <ul class="list-disc list-inside space-y-1 pl-1 text-xs">
                             <li>長篇商務報告排版、自訂樣式、自動目錄與頁碼規劃。</li>
-                            <li>巨集、變數追蹤與跨部門協同合約審理.</li>
+                            <li>巨集、變數追蹤與跨部門協同合約審理。</li>
                             <li>標準作業程序 (SOP) 模版設計。</li>
                         </ul>
                         <div class="h-[1px] bg-cream-200 my-2"></div>
@@ -426,7 +516,7 @@
             }
         }
 
-        // 複製至剪貼簿功能
+        // 一鍵複製至剪貼簿功能
         function copyToClipboard(text, successMessage) {
             const tempInput = document.createElement("textarea");
             tempInput.value = text;
@@ -502,6 +592,9 @@
         });
         document.getElementById('photoPreviewModal').addEventListener('click', function(e) {
             if (e.target === this) closePhotoPreview();
+        });
+        document.getElementById('debugModal').addEventListener('click', function(e) {
+            if (e.target === this) closeDebugModal();
         });
     </script>
 </body>
